@@ -43,23 +43,6 @@ const App = () => {
   };
 
 
-  // const handleFormSubmit = (employee) => {
-  //   if (currentEmployee) {
-  //     setEmployees(
-  //       employees.map((emp) =>
-  //         emp.id === currentEmployee.id ? {...employee, id: currentEmployee.id} : emp
-  //       )
-  //     );
-  //   } else {
-  //     setEmployees([...employees, {...employee, id: employees.length + 1}]);
-  //   }
-  //   closeModel();
-  // };
-
-  // const deleteEmployee = (id) => {
-  //   setEmployees(employees.filter((employee) => employee.id !== id));
-  // };
-
   return (
     <div className='app'>
       <h1 className='title'>Employee Management Software</h1>
