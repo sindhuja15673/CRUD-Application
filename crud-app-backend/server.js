@@ -10,7 +10,6 @@ app.use(bodyParser.json());
 
 let employees = [];
 
-// Create an employee
 app.post('/api/employees', (req, res) => {
   const employee = { id: employees.length + 1, ...req.body };
   employees.push(employee);
