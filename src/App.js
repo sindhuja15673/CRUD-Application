@@ -13,8 +13,13 @@ const App = () => {
   }, []);
 
   const fetchEmployees = async () => {
-    const { data } = await employeeServices.getEmployees();
-    setEmployees(data);
+    try {
+      const { data } = await employeeServices.getEmployees();
+      setEmployees(data);
+    } catch (error) {
+      console.error('Error fetching employees:', error);
+    }
+    
   };
 
   const openModel = (employee = null) => {
@@ -28,18 +33,28 @@ const App = () => {
   };
 
   const handleFormSubmit = async (employee) => {
-    if (currentEmployee) {
-      await employeeServices.updateEmployee(currentEmployee.id, employee);
-    } else {
-      await employeeServices.createEmployee(employee);
+    try {
+      if (currentEmployee) {
+        await employeeServices.updateEmployee(currentEmployee.id, employee);
+      } else {
+        await employeeServices.createEmployee(employee);
+      }
+      fetchEmployees();
+      closeModel();
+    } catch (error) {
+      console.error('Error submitting form:', error);
     }
-    fetchEmployees();
-    closeModel();
+    
   };
 
   const deleteEmployee = async (id) => {
-    await employeeServices.deleteEmployee(id);
-    fetchEmployees();
+    try {
+      await employeeServices.deleteEmployee(id);
+      fetchEmployees();
+    } catch (error) {
+      console.error('Error deleting employee:', error);
+    }
+    
   };
 
 
