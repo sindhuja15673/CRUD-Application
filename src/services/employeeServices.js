@@ -1,6 +1,7 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:5000/api/employees';
+const API_URL = 'https://crud-application-4-pno2.onrender.com/api/employees';
+
 
 const getEmployees = () => axios.get(API_URL);
 const getEmployee = (id) => axios.get(`${API_URL}/${id}`);
