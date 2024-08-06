@@ -13,7 +13,7 @@ let employees = [];
 app.post('/api/employees', (req, res) => {
   const employee = { id: employees.length + 1, ...req.body };
   employees.push(employee);
-  res.status(201).json({message:'Employee is created'});
+  res.status(201).json(employee);
 });
 
 // Read all employees
@@ -34,7 +34,7 @@ app.put('/api/employees/:id', (req, res) => {
   if (!employee) return res.status(404).json({ message: 'Employee not found' });
 
   Object.assign(employee, req.body);
-  res.json({message:'Employee is updated'});
+  res.json(employee);
 });
 
 // Delete an employee
